@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "covid-pipeline"
+version = "0.1.0"
+description = "Pipeline de datos COVID-19 con Dagster"
+dependencies = [
+    "dagster",
+    "dagster-webserver",
+    "pandas",
+    "requests",
+    "openpyxl",
+    "numpy"
+]
+
+[tool.dagster]
+module_name = "covid_pipeline"

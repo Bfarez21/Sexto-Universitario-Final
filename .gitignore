@@ -1,0 +1,6 @@
+.venv
+### VS Code ##
+.vscode/
+.tmp_dagster_home_x8uvmpxx
+ compact.csv
+*.csv
