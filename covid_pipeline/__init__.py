@@ -9,7 +9,8 @@ from .assets import (
     check_fechas_futuras,
     check_columnas_clave,
     check_unicidad_country_date,
-    check_population_positiva
+    check_population_positiva,
+    check_new_cases_no_negativos
 )
 
 defs = Definitions(
@@ -25,6 +26,7 @@ defs = Definitions(
         check_fechas_futuras,
         check_columnas_clave,
         check_unicidad_country_date,
-        check_population_positiva
+        check_population_positiva,
+        check_new_cases_no_negativos
     ]
 )
