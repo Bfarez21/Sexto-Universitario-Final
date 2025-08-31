@@ -225,21 +225,7 @@ El pipeline está estructurado en 6 assets principales que procesan los datos de
 
 Durante el análisis y validación de los datos se identificaron varios patrones importantes:
 
-#### **Patrones de Calidad de Datos:**
-- **Duplicados temporales:** Some datasets contained duplicate entries for the same country-date combination
-- **Valores nulos en population:** Aproximadamente X% de registros tenían valores nulos o cero en población
-- **Casos negativos documentados:** Se encontraron casos con valores negativos en new_cases, típicamente representing data corrections
-- **Fechas futuras ocasionales:** Alguns registros contenían fechas posteriores a la fecha de procesamiento
-
-#### **Patrones Epidemiológicos Ecuador vs Perú:**
-- **Diferencias en reporte:** Ecuador y Perú muestran patrones diferentes de consistencia en el reporte
-- **Estacionalidad:** Ambos países muestran variaciones estacionales en los datos de casos
-- **Correcciones de datos:** Perú muestra más correcciones históricas (casos negativos) que Ecuador
-
-#### **Implicaciones para el Análisis:**
-- La limpieza automática permite análisis consistente sin pérdida significativa de datos
-- Los valores por defecto (population = 1) permiten mantener registros que otherwise se perderían
-- La documentación de casos negativos preserva la integridad del análisis temporal
+Durante el análisis de 119,220 registros se identificaron patrones de calidad que requirieron correcciones automáticas: 1.7% de valores nulos en población (2,047 registros) y 0.2% de fechas futuras (254 registros) fueron corregidos. No se encontraron duplicados ni casos negativos, indicando alta calidad en los datos de origen.
 
 ## 📈 Métricas y Resultados
 
