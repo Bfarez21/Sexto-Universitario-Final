@@ -1,10 +1,10 @@
 # Pipeline de Datos COVID-19 con Dagster
 
-## 📋 Descripción del Proyecto
+##  Descripción del Proyecto
 
 Este proyecto implementa un pipeline de datos robusto utilizando Dagster para el análisis y procesamiento de datos relacionados con COVID-19. El pipeline incluye validaciones de calidad de datos, transformaciones y generación de métricas para el análisis epidemiológico.
 
-## 🏗️ Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```
 PIPELINEDATOSCOVID-19/
@@ -23,10 +23,10 @@ PIPELINEDATOSCOVID-19/
 └── pyproject.toml             # Configuración del proyecto
 ```
 
-## 🚀 Instalación y Configuración
+##  Instalación y Configuración
 
 ### Prerrequisitos
-- Python 3.10+
+- Python 3.8+
 - pip o conda
 
 ### Instalación
@@ -48,7 +48,7 @@ source venv/bin/activate  # En Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## 📊 Dataset
+##  Dataset
 
 El proyecto utiliza datos de COVID-19 de **Our World in Data**, una fuente confiable y actualizada que incluye información sobre casos, vacunaciones y métricas epidemiológicas globales.
 
@@ -59,7 +59,7 @@ El proyecto utiliza datos de COVID-19 de **Our World in Data**, una fuente confi
 - **Columnas clave:** country, date, new_cases, people_vaccinated, population
 - **Estrategia de respaldo:** Archivo local `compact.csv` en caso de falla de descarga
 
-## 🔧 Uso del Pipeline
+##  Uso del Pipeline
 
 ### Ejecutar el pipeline completo:
 ```bash
@@ -100,7 +100,7 @@ dagster asset materialize --select reporte_excel_covid
 ### Visualizar el pipeline:
 Navega a `http://localhost:3000` para acceder a la interfaz web de Dagster.
 
-## 🏛️ Arquitectura del Pipeline
+##  Arquitectura del Pipeline
 
 ### Assets Principales
 
@@ -185,7 +185,7 @@ El pipeline está estructurado en 6 assets principales que procesan los datos de
 - **Promedio móvil 7 días:** Suaviza variaciones de reporte (fines de semana, feriados)
 - **Factor de crecimiento semanal:** Métrica temprana de detección de brotes
 
-## ✅ Validaciones Implementadas
+##  Validaciones Implementadas
 
 ### 1. **Validaciones de Entrada** (`limpiar_datos_para_checks`)
 
@@ -227,7 +227,7 @@ Durante el análisis y validación de los datos se identificaron varios patrones
 
 Durante el análisis de 119,220 registros se identificaron patrones de calidad que requirieron correcciones automáticas: 1.7% de valores nulos en población (2,047 registros) y 0.2% de fechas futuras (254 registros) fueron corregidos. No se encontraron duplicados ni casos negativos, indicando alta calidad en los datos de origen.
 
-## 📈 Métricas y Resultados
+##  Métricas y Resultados
 
 ### Métricas Implementadas
 
@@ -260,29 +260,26 @@ Durante el análisis de 119,220 registros se identificaron patrones de calidad q
 
 | Validación | Regla | Estado Típico | Filas Afectadas | Acción Tomada |
 |------------|-------|---------------|-----------------|---------------|
-| **check_fechas_futuras** | `date <= today()` | ✅ PASS | 0 | Filtrado automático |
-| **check_columnas_clave** | Columnas ['country','date','population'] presentes | ✅ PASS | N/A | Creación si falta |
-| **check_unicidad_country_date** | Sin duplicados (country, date) | ⚠️ WARN | ~1-5% | Eliminación duplicados |
-| **check_population_positiva** | `population > 0` | ✅ PASS* | <1% | Reemplazo con 1 |
-| **check_new_cases_no_negativos** | `new_cases >= 0` | ⚠️ DOCUMENTED | ~0.5% | Documentado (correcciones de datos) |
+| **check_fechas_futuras** | `date <= today()` |  PASS | 0 | Filtrado automático |
+| **check_columnas_clave** | Columnas ['country','date','population'] presentes |  PASS | N/A | Creación si falta |
+| **check_unicidad_country_date** | Sin duplicados (country, date) |  WARN | ~1-5% | Eliminación duplicados |
+| **check_population_positiva** | `population > 0` |  PASS* | <1% | Reemplazo con 1 |
+| **check_new_cases_no_negativos** | `new_cases >= 0` |  DOCUMENTED | ~0.5% | Documentado (correcciones de datos) |
 
 *Después de limpieza automática
 
 #### **Estadísticas de Procesamiento**
 
-**Datos de Entrada (típico):**
-- **Registros totales:** ~200,000-300,000 (todos los países)
-- **Países únicos:** ~200 países
-- **Rango temporal:** 2020-01-01 hasta presente
+
 
 **Datos Procesados (Ecuador + Perú):**
-- **Registros procesados:** ~2,000-3,000 (solo Ecuador y Perú)
+- **Registros procesados:** 1,616 ((581 Ecuador + 1,035 Perú)
 - **Completitud:** >95% después de limpieza
 - **Período analizado:** Desde primer caso reportado hasta última fecha disponible
 
 **Métricas Generadas:**
-- **Incidencia 7d:** ~2,000-3,000 registros diarios por país
-- **Factor crecimiento:** ~1,000-2,000 registros semanales por país
+- **Incidencia 7d:** 1,616 registros totales (diarios por país)
+- **Factor crecimiento:** calculado semanalmente (≈ 230 semanas en Perú, ≈ 83 semanas en Ecuador)
 - **Reportes Excel:** 3 hojas con datos completos
 
 #### **Calidad Final de Datos**
@@ -295,7 +292,7 @@ Durante el análisis de 119,220 registros se identificaron patrones de calidad q
 
 ### Resultados de Comparación Ecuador vs Perú
 
-#### **Patrones Identificados** (Ejemplo ilustrativo)
+#### **Patrones Identificados** 
 
 **Comportamiento durante picos epidemiológicos:**
 - **Ecuador:** Picos más agudos y de menor duración
@@ -309,7 +306,8 @@ Durante el análisis de 119,220 registros se identificaron patrones de calidad q
 - Ambos países muestran patrones similares de aceleración/desaceleración
 - Correlación temporal alta durante eventos regionales
 
-## 🛠️ Consideraciones de Arquitectura
+![Comparación Ecuador vs Perú](./tendencias_covid.png)
+##  Consideraciones de Arquitectura
 
 ### 1. **Elección de Pandas vs DuckDB vs Soda para Métricas y Validaciones**
 
@@ -390,7 +388,7 @@ COVID_URL = "..."  # Cambio de fuente centralizado
 - Logging automático de estadísticas (filas procesadas, países, rangos de fechas)
 - Trazabilidad completa del lineage de datos
 
-## 🔍 Monitoreo y Observabilidad
+##  Monitoreo y Observabilidad
 
 - **Logs:** Registro detallado de ejecuciones
 - **Métricas:** Tiempo de ejecución y uso de recursos
@@ -399,11 +397,11 @@ COVID_URL = "..."  # Cambio de fuente centralizado
 
 
 
-## 📝 Licencia
+##  Licencia
 
 Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
 
-## 📞 Contacto
+##  Contacto
 
 - **Autor:** Bryan Fárez N.
 - **Email:** bryanfareznieves@gmail.com
