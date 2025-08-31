@@ -1,7 +1,5 @@
 # Pipeline de Datos COVID-19 con Dagster
 
-##  Descripción del Proyecto
-
 Este proyecto implementa un pipeline de datos robusto utilizando Dagster para el análisis y procesamiento de datos relacionados con COVID-19. El pipeline incluye validaciones de calidad de datos, transformaciones y generación de métricas para el análisis epidemiológico.
 
 ##  Estructura del Proyecto
@@ -14,7 +12,7 @@ PIPELINEDATOSCOVID-19/
 │   ├── analisis_manual.py     # Script de análisis exploratorio
 │   ├── assets.py              # Assets principales del pipeline
 │   ├── inspect_dataset.py     # Utilidad de inspección de datos
-│   └──  tabla_perfilado_manual.csv   #archivo generado
+│   └──  tabla_perfilado_manual.csv   #archivo generado con script analisis_manual.py
 ├── compact.csv
 ├── .gitignore
 ├── README.md
