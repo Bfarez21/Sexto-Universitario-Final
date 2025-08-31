@@ -7,24 +7,24 @@ Este proyecto implementa un pipeline de datos robusto utilizando Dagster para el
 ```
 PIPELINEDATOSCOVID-19/
 ├── covid_pipeline/
-│   ├── __pycache__/            # Cache de Python
-│   ├── __init__.py            # Definiciones de Dagster
-│   ├── analisis_manual.py     # Script de análisis exploratorio
-│   ├── assets.py              # Assets principales del pipeline
-│   ├── inspect_dataset.py     # Utilidad de inspección de datos
+│   ├── __pycache__/                  # Cache de Python
+│   ├── __init__.py                   # Definiciones de Dagster
+│   ├── analisis_manual.py            # Script de análisis exploratorio
+│   ├── assets.py                     # Assets principales del pipeline
+│   ├── inspect_dataset.py            # Utilidad de inspección de datos
 │   └──  tabla_perfilado_manual.csv   #archivo generado con script analisis_manual.py
 ├── compact.csv
 ├── .gitignore
 ├── README.md
-├── reporte_covid_202508.md     # Reporte técnico detallado
-├── requirements.txt            # Dependencias del proyecto
-└── pyproject.toml             # Configuración del proyecto
+├── reporte_covid_202508.md           # Reporte técnico detallado
+├── requirements.txt                  # Dependencias del proyecto
+└── pyproject.toml                    # Configuración del proyecto
 ```
 
 ##  Instalación y Configuración
 
 ### Prerrequisitos
-- Python 3.8+
+- Python 3.12
 - pip o conda
 
 ### Instalación
@@ -71,7 +71,7 @@ pip install -e .
 dagster dev
 ```
 
-### Ejecutar assets específicos:
+### Ejecutar assets específicos o directamente desde la Web:
 ```bash
 # Materializar un asset específico
 dagster asset materialize --select leer_datos
