@@ -1,0 +1,9 @@
+metrica,valor,descripcion
+total_registros,523599,Total de registros en el dataset
+total_paises,262,Número de países únicos
+fecha_minima,2020-01-01,Fecha más antigua en los datos
+fecha_maxima,2025-12-31,Fecha más reciente en los datos
+columnas_totales,61,Número total de columnas
+new_cases_presente,True,Columna new_cases presente
+people_vaccinated_presente,True,Columna people_vaccinated presente
+population_presente,True,Columna population presente
